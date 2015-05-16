@@ -15,62 +15,25 @@ public class MoveDreamer : MonoBehaviour {
 	
 	void Update() 
 	{
-		
+
 	}  
 	
-	void OnTriggerEnter2D(Collider2D other)
+		private string move()
 	{
-		switch(other.gameObject.tag)
-		{
-		case "btnRight":
-			
+		if(Input.GetKey(KeyCode.DownArrow)){
+			trans.Translate(new Vector3(-0,-0.04f, 0));
+			return "DOWN";
+		}else if(Input.GetKey(KeyCode.UpArrow)){
+			trans.Translate(new Vector3(0f, 0.04f, 0));
+			return "UP";
+		}else if(Input.GetKey(KeyCode.LeftArrow)){
+			trans.Translate(new Vector3(-0.04f, 0, 0));
+			return "LEFT";
+		}else if(Input.GetKey(KeyCode.RightArrow)){
 			trans.Translate(new Vector3(0.04f, -0, 0));
-
-			
-			
-			Debug.Log ( "Indo Pra Direita");
-				
-			break;
-		}
-		
-		switch(other.gameObject.tag)
-		{
-		case "btnLeft":
-			
-			
-			trans.Translate(new Vector3(-0.04f, -0, 0));
-			
-			
-			Debug.Log("Indo para a Esquerda");
-			
-			
-			break;
-		}
-		
-		switch(other.gameObject.tag)
-		{
-		case "btnDown":
-			
-			trans.Translate(new Vector3(0,-0.04f, 0));
-			
-			
-			Debug.Log ( "Tô Abaixado");
-			
-			break;
-			
-		}
-		
-		switch(other.gameObject.tag)
-			
-		{
-		case "btnUp":
-			
-			trans.Translate(new Vector3(0,0.04f,0));
-			
-			Debug.Log ("Olhei pra cima");
-				
-			break;
-		}
-		
+			return "RIGHT";
+		}else{
+			return "IDLE";
+		}	
 	}
 }
