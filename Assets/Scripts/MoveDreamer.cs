@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class MoveDreamer : MonoBehaviour {
 	
 	private Transform trans;
 	public float Velocity = 0.1f;
