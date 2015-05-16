@@ -1,75 +1,295 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine.UI;
 
 public class SceneChange : MonoBehaviour 
 {
-	public List<string> Scenes;
-	// Use this for initialization
+	//MELHORIAS
+	//Organizar a disposiçao das linhas de codigo do update
+	//Corrigir o numero das lists, de forma que fique mais facil entender qual scene eu estou trabalhando
+
+	public List<bool> FinishedLevels;//Lista de booleanas, que mudam conforme o player completa as fases (Compleitei a fase 1 = Booleana 1 se torna verdadeira)
+	public List<string> Scenes;//Lista que armazena as strings das scenes
+
+	public Button BackLoadScene;//Botao para ir ate a scene de seleçao de fase
+	public Button PlayAgain;//Botao para dar replay na fase
+	public Button NextLevel;//Botao para ir ate a proxima fase
+
+
 	void Start () 
 	{
 	}
-	
-	// Update is called once per frame
+
 	void Update () 
 	{
-		if (Application.loadedLevel == 0)
-			Debug.Log ("Teste" + Application.loadedLevel);
-
-		if (Application.loadedLevel == 0 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[1]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 1 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[2]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 2 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[3]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 3 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[4]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 4 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[5]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 5 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[6]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 6 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[7]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 7 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[8]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 8 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[9]);//Carrega a StartCutscene
-		if (Application.loadedLevel == 9 && Input.GetKey(KeyCode.S))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[10]);//Carrega a StartCutscene
-
-
-
-
-
-
-		/*if (Application.loadedLevel == 1)//Aqui colocamos alguma condiçao que indique que a cutscene acabou, como uma booleana))
+//Carregando niveis, testando se terminei o anterior, testando se eu quero fazer a fase novamente, ir pra tela de escolha de fase ou ir para proxima fase
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 0 && Input.GetKey(KeyCode.S))//caso o player esteja no menu e aperte S
+			Application.LoadLevel(Scenes[1]);//Carregar StartCutscene
+//-------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 1 && Input.GetKey(KeyCode.S))//caso o player esteja na StartCutscene e aperte S 
 			Application.LoadLevel(Scenes[2]);//Carregar Fase 1
-		if (Application.loadedLevel == 2)//Aqui colocamos uma bool indicando que o objetivo da fase 1 foi concluido, como pegar um item, ou matar um boss, etc))
-			Application.LoadLevel(Scenes[3]);//Carregar Fase 2
-		if (Application.loadedLevel == 3) //Aqui colocamos uma bool indicando que o objetivo da fase 2 foi concluido, como pegar um item, ou matar um boss, etc))
-			Application.LoadLevel(Scenes[4]);//Carregar Fase 3
-		if (Application.loadedLevel == 4 ) //Aqui colocamos uma bool indicando que o objetivo da fase 3 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[5]);//Carregar Fase 4
-		if (Application.loadedLevel == 5 ) //Aqui colocamos uma bool indicando que o objetivo da fase 4 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[6]);//Carregar Fase 5
-		if (Application.loadedLevel == 6 ) //Aqui colocamos uma bool indicando que o objetivo da fase 5 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[7]);//Carregar Fase 6
-		if (Application.loadedLevel == 7 ) //Aqui colocamos uma bool indicando que o objetivo da fase 6 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[8]);//Carregar Fase 7
-		if (Application.loadedLevel == 8 ) //Aqui colocamos uma bool indicando que o objetivo da fase 7 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[9]);//Carregar Fase 8
-		if (Application.loadedLevel == 9 ) //Aqui colocamos uma bool indicando que o objetivo da fase 8 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[10]);//Carregar Fase 9
-		if (Application.loadedLevel == 10 ) //Aqui colocamos uma bool indicando que o objetivo da fase 9 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[11]);//Carregar Fase 10
-		if (Application.loadedLevel == 11 ) //Aqui colocamos uma bool indicando que o objetivo da fase 10 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[12 ]);//Carregar Fase 11
-		if (Application.loadedLevel == 12 ) //Aqui colocamos uma bool indicando que o objetivo da fase 11 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[13]);//Carregar Fase 12
-		if (Application.loadedLevel == 13 ) //Aqui colocamos uma bool indicando que o objetivo da fase 12 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[14]);//Carregar Fase 13
-		if (Application.loadedLevel == 14 ) //Aqui colocamos uma bool indicando que o objetivo da fase 13 foi concluido, como pegar um item, ou matar um boss, etc))))//Caso eu esteja na scene Menu, e aperte S de START
-			Application.LoadLevel(Scenes[15]);//Carregar EndCutscenel*/
+//-------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 2 && FinishedLevels[0] == true)//Caso o player esteja na fase 1, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase2
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+			
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[3]);
+			};
+		}
+//--------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 3 && FinishedLevels[1] == true)//Caso o player esteja na fase 2, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase3 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+			
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[4]);
+			};
+		}
+//---------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 4 && FinishedLevels[2] == true)//Caso o player esteja na fase 3, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase4 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[5]);
+			};
+		}
+//------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 5 && FinishedLevels[3] == true)//Caso o player esteja na fase 4, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase5 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[6]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 6 && FinishedLevels[4] == true)//Caso o player esteja na fase 5, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase6
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[7]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 7 && FinishedLevels[5] == true)//Caso o player esteja na fase 6, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase7 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[8]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 8 && FinishedLevels[6] == true)//Caso o player esteja na fase 7, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase8 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[9]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 9 && FinishedLevels[7] == true)//Caso o player esteja na fase 8, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase9
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[10]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 10 && FinishedLevels[8] == true)//Caso o player esteja na fase 9, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase10 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[11]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 11 && FinishedLevels[9] == true)//Caso o player esteja na fase 10, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase11 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[12]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 12 && FinishedLevels[10] == true)//Caso o player esteja na fase 11, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase12 
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[13]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 13 && FinishedLevels[11] == true)//Caso o player esteja na fase 12, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase13
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[14]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
+		if (Application.loadedLevel == 14 && FinishedLevels[12] == true)//Caso o player esteja na fase 13, e a booleana que indica que ele concluiu a fase for verdadeira, ele vai para a fase14
+		{
+			//Linha reservada para colocar o aparecimento(Ativar o renderer) da UI com as opçoes de final de fase (Voltar a tela de carregamento, repetir a fase, ir para a proxima)
+				
+			if(BackLoadScene == true)//Testa se o player clicou no botao "Voltar a tela de carregamento"
+			{
+				Application.LoadLevel(Scenes[20]);
+			}
+			
+			else if(PlayAgain)//Testa se o player clicou no botao "Repetir a fase"
+			{
+				Application.LoadLevel(Application.loadedLevel); 
+			} 
+			
+			else if(NextLevel)//Testa se o player clicou no botao "Ir para proxima fase"
+			{
+				Application.LoadLevel (Scenes[15]);
+			};
+		}
+//-------------------------------------------------------------------------------------------
 	}
 }
