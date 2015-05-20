@@ -45,7 +45,7 @@ public class Enemy: MonoBehaviour
 
 		switch(other.gameObject.tag)
 		{
-		case "Wall3":
+		case "WallVision":
 			
 			VelX = -0.15f;
 			VelY = -0.10f;
@@ -56,7 +56,7 @@ public class Enemy: MonoBehaviour
 
 		switch(other.gameObject.tag)
 		{
-		case "Wall4":
+		case "Player":
 			
 			VelX = 0.15f;
 			VelY = 0.10f;

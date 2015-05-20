@@ -25,10 +25,10 @@ public class Life : MonoBehaviour
 	{
 		switch(other.gameObject.tag)
 		{
-		case "WallRight":
+		case "WallVision":
 			
-			VelX = 2f;
-			VelY = -0.3f;
+			VelX = 0.15f;
+			VelY = 0.10f;
 			Debug.Log ("Bateu");
 			
 			break;
