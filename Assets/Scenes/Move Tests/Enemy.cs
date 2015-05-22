@@ -58,8 +58,8 @@ public class Enemy: MonoBehaviour
 		{
 		case "Player":
 			
-			VelX = 0.15f;
-			VelY = 0.10f;
+			VelX = -0.5f;
+			VelY = 0f;
 			Debug.Log ("Bateu");
 			
 			break;
@@ -67,10 +67,10 @@ public class Enemy: MonoBehaviour
 
 		switch(other.gameObject.tag)
 		{
-		case "Wall5":
+		case "Player2":
 			
-			VelX = -0.15f;
-			VelY = 0.10f;
+			VelX = 0.5f;
+			VelY = 0f;
 			Debug.Log ("Bateu");
 			
 			break;
