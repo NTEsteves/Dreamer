@@ -4,14 +4,14 @@ using System.Collections;
 public class Enemy: MonoBehaviour 
 {
 	
-	public float VelX;
-	public float VelY;
-	public float VelZ;
+	public static float VelX = -0.15f;
+	public static float VelY = 0f;
+	public static float VelZ;
 	
 	void Start () 
 	{
-		//VelX = -0.02f;
-		//VelY = 0;
+		VelX = -0.15f;
+		VelY = 0;
 	}
 	
 	// Update is called once per frame
