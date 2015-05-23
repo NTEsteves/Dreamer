@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{	
+		if(GeneralButtons.isPaused) return;
 		transform.position += new Vector3 (VelX, VelY, VelZ);
 	}
 	

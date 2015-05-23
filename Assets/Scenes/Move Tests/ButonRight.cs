@@ -19,6 +19,7 @@ public class ButonRight : MonoBehaviour {
 	{
 		Player.VelX = 0.15f;
 		Loyalty.VelX = 0.13f;
+
 	}
 
 	void OnMouseUp()
