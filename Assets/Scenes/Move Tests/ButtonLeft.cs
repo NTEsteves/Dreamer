@@ -18,11 +18,13 @@ public class ButtonLeft : MonoBehaviour {
 	{
 	
 		Player.VelX = -0.15f;
+		Loyalty.VelX = - 0.13f;
 	}
 
 	void OnMouseUp()
 	{
 		Player.VelX = 0f;
+		Loyalty.VelX = 0f;
 	}
 
 }

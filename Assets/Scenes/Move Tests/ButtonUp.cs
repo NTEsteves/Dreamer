@@ -18,10 +18,12 @@ public class ButtonUp : MonoBehaviour {
 	{
 		
 		Player.VelY = 0.15f;
+		Loyalty.VelY = 0.13f; 
 	}
 	
 	void OnMouseUp()
 	{
 		Player.VelY = 0f;
+		Loyalty.VelY = 0f;
 	}
 }
