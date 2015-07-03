@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scenes\Move Tests\ButtonUp.cs" />
      <Compile Include="Assets\Scenes\Move Tests\Enemy.cs" />
      <Compile Include="Assets\Scenes\Move Tests\FindPlayer.cs" />
+     <Compile Include="Assets\Scenes\Move Tests\GeneralButtons.cs" />
+     <Compile Include="Assets\Scenes\Move Tests\Loyalty.cs" />
      <Compile Include="Assets\Scenes\Move Tests\Player.cs" />
      <Compile Include="Assets\Scripts\MoveDreamer.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
